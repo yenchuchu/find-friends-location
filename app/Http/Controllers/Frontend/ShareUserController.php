@@ -34,7 +34,7 @@ class ShareUserController extends Controller {
             ));
         }
 
-        if(!isset($data['user_id_receive_generate']) || !isset($data['status']) || !isset($data['message']) || !$data['user_id_receive_generate'] || !$data['status'] || !$data['message'] || $data['status'] == Config::get('constants.share_user.status.sharing_location') ) {
+        if(!isset($data['user_id_receive_generate']) || !isset($data['status']) || !isset($data['message']) || !$data['user_id_receive_generate'] || !$data['status'] == null || !$data['message'] || $data['status'] == Config::get('constants.share_user.status.sharing_location') ) {
             // $data['status'] = 0 hoặc 2. 1 là khi người kia đã accept
             return Response::json(array(
                 'code' => 0,
