@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Api\User\ShareUserEloquentRepository;
+use App\Repositories\Api\User\ShareUserRepositoryInterface;
 use App\Repositories\Api\User\UserEloquentRepository;
 use App\Repositories\Api\User\UserRepositoryInterface;
 use App\Repositories\Backend\User\UserEloquentRepository as UserEloquentRepositoryBackend;
@@ -33,14 +35,23 @@ class AppServiceProvider extends ServiceProvider
             PostRepositoryInterface::class,
             PostEloquentRepository::class
         );
+
+        // BACKEN
+        $this->app->singleton(
+            UserRepositoryInterfaceBackend::class,
+            UserEloquentRepositoryBackend::class
+        );
+
+        // FRONTEN
         $this->app->singleton(
             UserRepositoryInterface::class,
             UserEloquentRepository::class
         );
         $this->app->singleton(
-            UserRepositoryInterfaceBackend::class,
-            UserEloquentRepositoryBackend::class
+            ShareUserRepositoryInterface::class,
+            ShareUserEloquentRepository::class
         );
+
 //        $this->app->bind('App\MyRepoInterface', 'App\EloquentMyRepo');
     }
 }

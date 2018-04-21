@@ -25,8 +25,13 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request) {
-
-        $data = Input::except(array('_token'));
+        $allRequest = $request->all();
+        $data = [
+            'name' => $allRequest['name'],
+            'email' => $allRequest['email'],
+            'password_confirmation' => $allRequest['password_confirmation'],
+            'password' => $allRequest['password'],
+        ];
 
         $validate= Validator::make(
             $data,

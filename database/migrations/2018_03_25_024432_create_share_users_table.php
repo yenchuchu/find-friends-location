@@ -18,8 +18,11 @@ class CreateShareUsersTable extends Migration
             $table->string('user_id_send');
             $table->string('user_id_receive');
             $table->string('message')->comment('share location with message')->nullable();
+            $table->text('info_user_receive')
+                ->comment('type: json ~ string; concat: avarta, display_name, phone, email, address');
             $table->tinyInteger('status')
-                ->comment('Trạng thái: 1- chờ user_id_receive chấp nhận; 2 - đang cùng kết nối; 3 - đã ngắt kết nối ')->nullable();
+                ->comment('Trạng thái: 0- chờ user_id_receive chấp nhận; 1 - đang cùng kết nối; 2 - chờ user_id_send chấp nhận share ')
+                ->default(0);
             $table->timestamps();
         });
     }

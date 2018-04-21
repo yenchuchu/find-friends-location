@@ -25,7 +25,10 @@ class CreateUsersTable extends Migration
             $table->string('user_token')->nullable();
             $table->date('last_login')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('total_info')->comment('concat address, email, phone')->nullable();
+            $table->string('total_info')
+                ->comment('type: json ~ string; concat: avarta, display_name, phone, email, address');
+            $table->string('total_info_string')
+                ->comment('type: string; concat: avarta - display_name - phone - email - address');
             $table->tinyInteger('status')->default(1)->comment('1- đang hoạt động, 2- bị tạm dừng hoạt động');
             $table->rememberToken();
             $table->timestamps();

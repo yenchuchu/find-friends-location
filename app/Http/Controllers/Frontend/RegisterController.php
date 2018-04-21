@@ -33,21 +33,21 @@ class RegisterController extends Controller
                 'display_name' =>'required|min:5|max:255',
                 'email' => 'email|required|unique:users|max:255',
                 'password' => 'required|min:6',
+                're_password' => 'required',
             ],
-
             [
                 'required'=>':attribute không được để trống',
                 'email'=>':attribute không đúng định dạng',
-                'min'=>':attribute không được nhỏ hơn :min',
+                'min'=>':attribute không được nhỏ hơn :min kí tự',
                 'unique'=>':attribute đã tồn tại trong hệ thống',
-                'max'=>':attribute không được lớn hơn :max',
+                'max'=>':attribute không được lớn hơn :max kí tự',
             ],
             [
                 'display_name' =>'Name',
                 'email' => 'Email',
                 'password' => 'Password',
+                're_password' => 'Confirm password', // mật khẩu xác nhận
             ]
-
         );
         if($validate->fails()){
             $errors = $validate->messages()->all();
@@ -68,7 +68,9 @@ class RegisterController extends Controller
         $data_new = [
             'display_name' => $data['display_name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make(sha1($data['password'])),
+            'total_info' => $data['email'],
+            'total_info_string' => $data['email'],
         ];
 
         $user = $this->user->store($data_new);
@@ -80,6 +82,23 @@ class RegisterController extends Controller
             ));
         }
 
+        $total_info_json = [
+            'display_name' => $user->display_name,
+            'email' => $user->email,
+            'phone' => $user->phone,
+            'address' => $user->address,
+            'avatar' => $user->avatar
+        ];
+
+        $total_info_string = [
+            'display_name' => $user->display_name,
+            'email' => $user->email,
+            'phone' => $user->phone,
+            'address' => $user->address,
+        ];
+
+        $user->total_info = json_encode($total_info_json);
+        $user->total_info_string = join($total_info_string);
         $user->user_id_generate = $user->id.$this->generateRandomString(15);
         $check_save = $user->save();
 
