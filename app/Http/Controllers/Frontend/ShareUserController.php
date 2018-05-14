@@ -27,7 +27,7 @@ class ShareUserController extends Controller {
         $data = $request->all();
         $headers = apache_request_headers();
 
-        if(!$headers || !isset($headers['user_token']) || !$headers['user_token']) {
+        if(!$headers || !isset($headers['Authorization']) || !$headers['Authorization']) {
             return Response::json(array(
                 'code' => 0,
                 'msg' => 'Bạn chưa đăng nhập'
@@ -42,7 +42,7 @@ class ShareUserController extends Controller {
             ));
         }
 
-        $user_id = $this->user->findUserIdByToken($headers['user_token']);
+        $user_id = $this->user->findUserIdByToken($headers['Authorization']);
         $info_user_receive = $this->user->getInfoUserByGenarate($data['user_id_receive_generate']);
 
         if(!$info_user_receive || !$user_id || $user_id == $info_user_receive->id) {
@@ -99,7 +99,7 @@ class ShareUserController extends Controller {
 
         $status = Config::get('constants.share_user.status.sharing_location');
 
-        if(!$headers || !isset($headers['user_token']) || !$headers['user_token']) {
+        if(!$headers || !isset($headers['Authorization']) || !$headers['Authorization']) {
             return Response::json(array(
                 'code' => 0,
                 'msg' => 'Bạn chưa đăng nhập'
@@ -113,7 +113,7 @@ class ShareUserController extends Controller {
             ));
         }
 
-        $user_id = $this->user->findUserIdByToken($headers['user_token']);
+        $user_id = $this->user->findUserIdByToken($headers['Authorization']);
         $info_user_receive = $this->user->getInfoUserByGenarate($data['user_id_receive_generate']);
 
         if(!$info_user_receive || !$user_id || $user_id == $info_user_receive->id) {
@@ -163,7 +163,7 @@ class ShareUserController extends Controller {
         $headers = apache_request_headers();
         $status = Config::get('constants.share_user.status.sharing_location');
 
-        if(!$headers || !isset($headers['user_token']) || !$headers['user_token']) {
+        if(!$headers || !isset($headers['Authorization']) || !$headers['Authorization']) {
             return Response::json(array(
                 'code' => 0,
                 'msg' => 'Bạn chưa đăng nhập'
@@ -177,7 +177,7 @@ class ShareUserController extends Controller {
             ));
         }
 
-        $user_id = $this->user->findUserIdByToken($headers['user_token']);
+        $user_id = $this->user->findUserIdByToken($headers['Authorization']);
         $info_user_receive = $this->user->getInfoUserByGenarate($data['user_id_receive_generate']);
 
         if(!$info_user_receive || !$user_id || $user_id == $info_user_receive->id) {

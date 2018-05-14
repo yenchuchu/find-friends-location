@@ -33,13 +33,13 @@ class UserController extends Controller {
      */
     public function getListFriends(Request $request) {
         $headers = apache_request_headers();
-        if(!$headers || !isset($headers['user_token']) || $headers['user_token'] == '' || $headers['user_token'] == null) {
+        if(!$headers || !isset($headers['Authorization']) || $headers['Authorization'] == '' || $headers['Authorization'] == null) {
             return Response::json(array(
                 'code' => 0,
                 'msg' => 'Bạn chưa đăng nhập'
             ));
         }
-        $user_id = $this->user->findUserIdByToken($headers['user_token']);
+        $user_id = $this->user->findUserIdByToken($headers['Authorization']);
 
         if(!$user_id) {
             return Response::json(array(
@@ -72,14 +72,14 @@ class UserController extends Controller {
     public function profile() {
         $headers = apache_request_headers();
 
-        if(!$headers || !isset($headers['user_token']) || $headers['user_token'] == '' || $headers['user_token'] == null) {
+        if(!$headers || !isset($headers['Authorization']) || $headers['Authorization'] == '' || $headers['Authorization'] == null) {
             return Response::json(array(
                 'code' => 0,
                 'msg' => 'Bạn chưa đăng nhập'
             ));
         }
 
-        $user = $this->user->getInfoUserByToken($headers['user_token']);
+        $user = $this->user->getInfoUserByToken($headers['Authorization']);
 
         if(!$user) {
             return Response::json(array(
@@ -102,7 +102,7 @@ class UserController extends Controller {
         $data = $request->all();
         $headers = apache_request_headers();
 
-        if(!$headers || !isset($headers['user_token']) || $headers['user_token'] == '' || $headers['user_token'] == null) {
+        if(!$headers || !isset($headers['Authorization']) || $headers['Authorization'] == '' || $headers['Authorization'] == null) {
             return Response::json(array(
                 'code' => 0,
                 'msg' => 'Bạn chưa đăng nhập'
