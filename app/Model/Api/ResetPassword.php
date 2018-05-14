@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Frontend;
+namespace App\Api;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 
-class ShareUser extends Model
+class ResetPassword extends Model
 {
     use HasApiTokens;
     /**
@@ -14,6 +14,6 @@ class ShareUser extends Model
      * @var array
      */
     protected $fillable = [
-       'id', 'user_id_send', 'user_id_receive', 'message', 'status', 'info_user_receive'
+        'user_id', 'status', 'code',
     ];
 }

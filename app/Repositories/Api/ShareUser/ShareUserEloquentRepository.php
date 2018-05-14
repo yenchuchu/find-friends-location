@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Api\ShareUser;
 
-use App\Frontend\ShareUser;
+use App\Api\ShareUser;
 use App\Repositories\Api\User\ShareUserRepositoryInterface;
 use App\Repositories\RepositoryAbstract;
 use Illuminate\Http\Request;

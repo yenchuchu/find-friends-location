@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Api;
 
-use App\Frontend\ResetPassword;
-use App\Frontend\User;
+use App\Api\ResetPassword;
+use App\Api\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Api\User\UserRepositoryInterface;
 use Carbon\Carbon;

@@ -21,8 +21,8 @@
         "classmap": [
             "database",
             "app",
-            "app/Model/frontend",
-            "app/Model/backend"
+            "app/Model/Api",
+            "app/Model/Web"
         ],
         "psr-4": {
             "App\\": "app/"

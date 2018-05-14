@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Frontend;
+namespace App\Api;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;

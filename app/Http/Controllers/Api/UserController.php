@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Api\ShareUser\ShareUserEloquentRepository;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 use Response;
-use App\Frontend\User;
+use App\Api\User;
 use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller {

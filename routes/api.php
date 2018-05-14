@@ -15,12 +15,12 @@ header('Access-Control-Allow-Origin: *');
 |
 */
 
-Route::group(array('namespace' => 'Frontend'), function () {
+Route::group(array('namespace' => 'Api'), function () {
 
     #login - register - forget password user
-    Route::post('/register', 'RegisterController@register')->name('frontend.user.register');
-    Route::post('/login', 'LoginController@login')->name('frontend.user.login');
-    Route::post('/forget-password', 'LoginController@forgetPassword')->name('frontend.user.forgot.password');
+    Route::post('/register', 'RegisterController@register')->name('api.user.register');
+    Route::post('/login', 'LoginController@login')->name('api.user.login');
+    Route::post('/forget-password', 'LoginController@forgetPassword')->name('api.user.forgot.password');
 
     # user send email to required reset password
     Route::post('/require-reset-password', array('uses' => 'LoginController@requiredResetPassword', 'as' => 'api.send.required.reset.password'));

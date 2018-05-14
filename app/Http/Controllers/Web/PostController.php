@@ -1,9 +1,9 @@
 <?php
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Post\PostRepositoryInterface;
-use App\Backend\Post;
+use App\Web\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

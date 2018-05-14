@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Web;
 
 use App\User as UserSystem;
-use App\Repositories\Backend\User\UserRepositoryInterface;
+use App\Repositories\Web\User\UserRepositoryInterface;
 use Firebase\JWT\JWT;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;

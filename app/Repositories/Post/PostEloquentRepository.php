@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories\Post;
 
-use App\Backend\Post;
+use App\Web\Post;
 use App\Repositories\RepositoryAbstract;
 
 class PostEloquentRepository extends RepositoryAbstract implements PostRepositoryInterface

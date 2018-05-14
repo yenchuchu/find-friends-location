@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Api\User;
 
-use App\Frontend\ResetPassword;
-use App\Frontend\User;
+use App\Api\ResetPassword;
+use App\Api\User;
 use App\Repositories\RepositoryAbstract;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

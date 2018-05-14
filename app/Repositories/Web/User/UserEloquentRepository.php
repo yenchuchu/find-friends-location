@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories\Backend\User;
+namespace App\Repositories\Web\User;
 
-use App\Backend\UserSystem;
+use App\Web\UserSystem;
 use App\Repositories\RepositoryAbstract;
 use Illuminate\Http\Request;
 

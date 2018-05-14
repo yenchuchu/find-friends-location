@@ -4,4 +4,5 @@
 /vendor
 /.idea
 Homestead.json
-Homestead.yaml .env
+Homestead.yaml
+.env

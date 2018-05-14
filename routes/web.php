@@ -21,7 +21,7 @@ Route::post('/logout', 'HomeController@logout')->name('user.logout');
 //Route::get('/login', 'RegisterController@showLoginForm')->name('user.login.form');
 //Route::post('/run-login', 'RegisterController@login')->name('user.login.go');
 
-Route::group(array('namespace' => 'Backend'), function () {
+Route::group(array('namespace' => 'Web'), function () {
 
     Route::get('/', 'PostController@index');
 
@@ -32,9 +32,7 @@ Route::group(array('namespace' => 'Backend'), function () {
     Route::post('/run-login', 'LoginController@login')->name('user.login.go');
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-});
 
-Route::group(array('namespace' => 'Backend'), function () {
     Route::get('/test-repository', 'PostController@index');
 });
 

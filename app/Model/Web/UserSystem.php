@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Backend;
+namespace App\Web;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -26,7 +26,7 @@ class UserSystem extends Authenticatable
      *
      * @var array
      */
-    protected $table = 'user_systems';
+    protected $table = 'users_systems';
     protected $fillable = [
         'display_name', 'email', 'password', 'address', 'phone', 'total_info', 'status', 'last_login', 'ip_address',
         'user_token', 'avatar',

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Web;
 
-use App\Backend\UserSystem;
-use App\Repositories\Backend\User\UserRepositoryInterface;
+use App\Web\UserSystem;
+use App\Repositories\Web\User\UserRepositoryInterface;
 
 use App\Register;
 use Illuminate\Support\Facades\Input;
