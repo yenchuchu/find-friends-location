@@ -130,6 +130,22 @@ class UserEloquentRepository extends RepositoryAbstract implements UserRepositor
     }
 
     /**
+     * find some infomation of user by token remember
+     * @param $token
+     * @return bool
+     */
+    public function findUserIdAndGenerateByToken($token)
+    {
+        $user = $this->_model->select('id', 'user_id_generate')->where('user_token', $token)->first();
+
+        if (!$user) {
+            return false;
+        }
+
+        return ['user_id' => $user->id, 'code_genarate' => $user->user_id_generate];
+    }
+
+    /**
      * find user by token remember
      * @param $token
      * @return bool

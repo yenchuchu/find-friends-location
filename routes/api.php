@@ -36,9 +36,9 @@ Route::group(array('namespace' => 'Api'), function () {
 
     # manage location users
     Route::group(['prefix' => 'location'], function () {
-        Route::post('/send', 'ShareUserController@createSharing')->name('api.create.sharing');
-        Route::post('/change-status', 'ShareUserController@changeStatusSharing')->name('api.change.sharing');
-        Route::post('/delete', 'ShareUserController@deleteSharing')->name('api.delete.sharing');
+        Route::post('/request-share', 'ShareUserController@createSharing')->name('api.create.sharing');
+        Route::post('/share', 'ShareUserController@changeStatusSharing')->name('api.change.sharing');
+        Route::post('/unshare', 'ShareUserController@deleteSharing')->name('api.delete.sharing');
     });
 
 

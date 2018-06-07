@@ -48,7 +48,7 @@ class UserController extends Controller {
             ));
         }
 
-        $users = $this->share_user->getListFriendsByUserId($user_id);
+        $users = $this->share_user->getListFrcreateSharingiendsByUserId($user_id);
 
         if(!$users) {
             return Response::json(array(

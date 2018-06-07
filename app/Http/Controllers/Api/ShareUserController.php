@@ -42,7 +42,9 @@ class ShareUserController extends Controller {
             ));
         }
 
-        $user_id = $this->user->findUserIdByToken($headers['Authorization']);
+        $user = $this->user->findUserIdAndGenerateByToken($headers['Authorization']);
+        $user_id = $user['user_id'];
+        $code_genarate = $user['code_genarate'];
         $info_user_receive = $this->user->getInfoUserByGenarate($data['user_id_receive_generate']);
 
         if(!$info_user_receive || !$user_id || $user_id == $info_user_receive->id) {
@@ -67,8 +69,8 @@ class ShareUserController extends Controller {
         }
 
         $data_create = [
-            'user_id_send' => $user_id,
-            'user_id_receive' => $info_user_receive->id,
+            'user_id_send' => $code_genarate,
+            'user_id_receive' => $data['user_id_receive_generate'],
             'message' => $data['message'] ,
             'info_user_receive' => $info_user_receive->total_info,
             'status' => $data['status']
