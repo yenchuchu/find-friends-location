@@ -28,7 +28,8 @@ Route::group(array('namespace' => 'Api'), function () {
     Route::post('reset-password', array('uses' => 'LoginController@resetPassword', 'as' => 'api.reset.password'));
 
     # list friends own auth
-    Route::get('/list-friends', 'UserController@getListFriends')->name('api.list.friends');
+    Route::get('/list-friends-sent', 'UserController@getListFriendsSent')->name('api.list.friends.sent');
+    Route::get('/list-friends-recieve', 'UserController@getListFriendsRecieve')->name('api.list.friends.recieve');
     # search uesrs
     Route::get('/search-users', 'UserController@searchUsers')->name('api.search.users');
     # get profile own auth

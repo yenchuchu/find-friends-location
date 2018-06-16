@@ -28,10 +28,11 @@ class UserController extends Controller {
 
     /**
      * method: GET - truyền user_token trong header
+     * Lấy danh sách những người được auth chia sẽ location
      * @param Request $request
      * @return mixed
      */
-    public function getListFriends(Request $request) {
+    public function getListFriendsSent(Request $request) {
         $headers = apache_request_headers();
         if(!$headers || !isset($headers['Authorization']) || $headers['Authorization'] == '' || $headers['Authorization'] == null) {
             return Response::json(array(
@@ -48,7 +49,47 @@ class UserController extends Controller {
             ));
         }
 
-        $users = $this->share_user->getListFrcreateSharingiendsByUserId($user_id);
+        $users = $this->share_user->getListFriendsSentByUserId($user_id);
+
+        if(!$users) {
+            return Response::json(array(
+                'code' => 1,
+                'data' => null,
+                'msg' => 'Không có dữ liệu'
+            ));
+        }
+
+        return Response::json(array(
+            'code' => 1,
+            'data' => $users,
+            'msg' => ''
+        ));
+    }
+
+    /**
+     * method: GET - truyền user_token trong header
+     * Lấy danh sách những người share location cho auth
+     * @param Request $request
+     * @return mixed
+     */
+    public function getListFriendsRecieve(Request $request) {
+        $headers = apache_request_headers();
+        if(!$headers || !isset($headers['Authorization']) || $headers['Authorization'] == '' || $headers['Authorization'] == null) {
+            return Response::json(array(
+                'code' => 0,
+                'msg' => 'Bạn chưa đăng nhập'
+            ));
+        }
+        $user_id = $this->user->findUserIdByToken($headers['Authorization']);
+
+        if(!$user_id) {
+            return Response::json(array(
+                'code' => 2,
+                'msg' => 'Bạn chưa đăng nhập'
+            ));
+        }
+
+        $users = $this->share_user->getListFriendsRecieveByUserId($user_id);
 
         if(!$users) {
             return Response::json(array(
